@@ -1,46 +1,139 @@
+"use strict";
 (() => {
 var exports = {};
 exports.id = 888;
 exports.ids = [888];
 exports.modules = {
 
-/***/ 9212:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ 932:
+/***/ ((__unused_webpack_module, exports) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ App)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(108);
-/* harmony import */ var _styles_globals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_styles_globals_css__WEBPACK_IMPORTED_MODULE_1__);
+var __webpack_unused_export__;
 
-
-// 顶级 React 组件，它包装了应用程序中的所有页面。
-// https://nextjs.org/docs/advanced-features/custom-app
-function App({ Component , pageProps  }) {
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
-        ...pageProps
-    });
+__webpack_unused_export__ = ({
+    value: true
+});
+Object.defineProperty(exports, "Z", ({
+    enumerable: true,
+    get: function() {
+        return _asyncToGenerator;
+    }
+}));
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+    try {
+        var info = gen[key](arg);
+        var value = info.value;
+    } catch (error) {
+        reject(error);
+        return;
+    }
+    if (info.done) {
+        resolve(value);
+    } else {
+        Promise.resolve(value).then(_next, _throw);
+    }
+}
+function _asyncToGenerator(fn) {
+    return function() {
+        var self = this, args = arguments;
+        return new Promise(function(resolve, reject) {
+            var gen = fn.apply(self, args);
+            function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+            }
+            function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+            }
+            _next(undefined);
+        });
+    };
 }
 
 
 /***/ }),
 
-/***/ 108:
-/***/ (() => {
+/***/ 648:
+/***/ ((__unused_webpack_module, exports) => {
 
+var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({
+    value: true
+});
+Object.defineProperty(exports, "Z", ({
+    enumerable: true,
+    get: function() {
+        return _interopRequireDefault;
+    }
+}));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
 
 
 /***/ }),
 
-/***/ 997:
+/***/ 35:
+/***/ ((module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({
+    value: true
+}));
+exports["default"] = void 0;
+var _async_to_generator = (__webpack_require__(932)/* ["default"] */ .Z);
+var _interop_require_default = (__webpack_require__(648)/* ["default"] */ .Z);
+var _react = _interop_require_default(__webpack_require__(689));
+var _utils = __webpack_require__(232);
+function appGetInitialProps(_) {
+    return _appGetInitialProps.apply(this, arguments);
+}
+function _appGetInitialProps() {
+    _appGetInitialProps = /**
+ * `App` component is used for initialize of pages. It allows for overwriting and full control of the `page` initialization.
+ * This allows for keeping state between navigation, custom error handling, injecting additional data.
+ */ _async_to_generator(function*({ Component , ctx  }) {
+        const pageProps = yield (0, _utils).loadGetInitialProps(Component, ctx);
+        return {
+            pageProps
+        };
+    });
+    return _appGetInitialProps.apply(this, arguments);
+}
+var _Component;
+class App extends (_Component = _react.default.Component) {
+    render() {
+        const { Component , pageProps  } = this.props;
+        return /*#__PURE__*/ _react.default.createElement(Component, Object.assign({}, pageProps));
+    }
+}
+App.origGetInitialProps = appGetInitialProps;
+App.getInitialProps = appGetInitialProps;
+exports["default"] = App;
+if ((typeof exports.default === "function" || typeof exports.default === "object" && exports.default !== null) && typeof exports.default.__esModule === "undefined") {
+    Object.defineProperty(exports.default, "__esModule", {
+        value: true
+    });
+    Object.assign(exports.default, exports);
+    module.exports = exports.default;
+} //# sourceMappingURL=_app.js.map
+
+
+/***/ }),
+
+/***/ 232:
 /***/ ((module) => {
 
-"use strict";
-module.exports = require("react/jsx-runtime");
+module.exports = require("next/dist/shared/lib/utils.js");
+
+/***/ }),
+
+/***/ 689:
+/***/ ((module) => {
+
+module.exports = require("react");
 
 /***/ })
 
@@ -51,7 +144,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = (__webpack_exec__(9212));
+var __webpack_exports__ = (__webpack_exec__(35));
 module.exports = __webpack_exports__;
 
 })();
