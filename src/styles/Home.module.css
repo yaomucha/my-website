@@ -143,11 +143,9 @@
   inset: 0;
   padding: 1px;
   border-radius: var(--border-radius);
-  background: linear-gradient(
-    to bottom right,
-    rgba(var(--tile-start-rgb), 1),
-    rgba(var(--tile-end-rgb), 1)
-  );
+  background: linear-gradient(to bottom right,
+      rgba(var(--tile-start-rgb), 1),
+      rgba(var(--tile-end-rgb), 1));
   background-clip: content-box;
 }
 
@@ -226,11 +224,9 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
+    background: linear-gradient(to bottom,
+        rgba(var(--background-start-rgb), 1),
+        rgba(var(--callout-rgb), 0.5));
     background-clip: padding-box;
     backdrop-filter: blur(24px);
   }
@@ -241,11 +237,9 @@
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
   }
 }
@@ -256,6 +250,9 @@
     grid-template-columns: repeat(2, 50%);
   }
 }
+
+
+
 
 @media (prefers-color-scheme: dark) {
   .vercelLogo {
@@ -272,7 +269,34 @@
   from {
     transform: rotate(360deg);
   }
+
   to {
     transform: rotate(0deg);
   }
+}
+
+.ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 32px;
+  font-family: "Wotfard","Wotfard-fallback",sans-serif;
+}
+.ul h3{
+  font-size: calc(1.375rem);
+}
+
+.ul li {
+  list-style: none;
+  padding: 32px;
+  background: white;
+  border-radius: 8px;
+  transition: background 350ms ease 0s;
+  position: relative;
+  height: 420px;
+  cursor: pointer;
+}
+
+.preContent{
+  margin-top: 16px;
+  font-size: 1rem;
 }

@@ -49,4 +49,7 @@
   
   .lightText {
     color: #666;
+    color: #666;
+    bottom: 20px;
+    position: absolute;
   }
