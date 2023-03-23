@@ -23,11 +23,12 @@ export default function Home({ allPostsData }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header/>
       <main className={styles.main}>
-        <Header/>
+        
         <h2>Recent</h2>
 
-        {/* <ul className={styles.ul}>
+        <ul className={styles.ul}>
           {allPostsData.map(({ id, date, title, preContent }) => (
             <Link href={`/posts/${id}`}>
               <li className={utilStyles.listItem} key={id}>
@@ -42,7 +43,7 @@ export default function Home({ allPostsData }) {
               </li>
             </Link>
           ))}
-        </ul> */}
+        </ul>
 
       </main>
     </>

@@ -1,0 +1,50 @@
+.navBar {
+    width: 100%;
+    padding: 0 200px;
+    z-index: 99;
+    position: fixed;
+    height: 82px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, .1) 0 5px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navBar a {
+    list-style: none;
+    float: left;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    position: relative;
+}
+
+/* .navBar a:hover {
+    background-color: rgba(0, 0, 0, .05);
+} */
+
+.navBar a::before {
+    position: absolute;
+    left: 20px;
+    bottom: 3px;
+    width: calc(100% - 40px);
+    height: 3px;
+    content: '';
+    background: #f4b6d4;
+    border-radius: 2px;
+    transition: .25s;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.navBar a:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.userImage {
+    border-radius: 50%;
+}
