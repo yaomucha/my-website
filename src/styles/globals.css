@@ -38,6 +38,13 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+
+
+
+  --background-white: white;
+  --color-pink: #fc93a3;
+  --color-gary: #666;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -99,4 +106,19 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+    width: .4rem;
+    height: .4rem;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #999;
+    border-radius: 10px;
 }

@@ -26,6 +26,7 @@ export default function Home({ allPostsData }) {
       <Header/>
       <main className={styles.main}>
         
+        
         <h2>Recent</h2>
 
         <ul className={styles.ul}>

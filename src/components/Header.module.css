@@ -4,7 +4,7 @@
     z-index: 99;
     position: fixed;
     height: 82px;
-    background-color: white;
+    background-color:var(--background-white);
     box-shadow: rgba(0, 0, 0, .1) 0 5px 20px;
     display: flex;
     flex-direction: row;
@@ -33,7 +33,7 @@
     width: calc(100% - 40px);
     height: 3px;
     content: '';
-    background: #f4b6d4;
+    background: var(--color-pink);
     border-radius: 2px;
     transition: .25s;
     transform: scale(0);
