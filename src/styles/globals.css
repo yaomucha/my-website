@@ -122,3 +122,14 @@ a {
     background-color: #999;
     border-radius: 10px;
 }
+
+
+
+.icon {
+  width: 2.5em;
+  height: 1.6em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  display: inline-block;
+}

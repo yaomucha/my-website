@@ -1,0 +1,67 @@
+.personBox {
+    width: 290px;
+    padding: 1.5rem;
+    background-color:var(--background-white);
+    box-shadow: rgba(0, 0, 0, .1) 0 5px 20px;
+    text-align: center;
+    border-radius: 20px;
+    float: left;
+}
+
+.statistics{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+}
+
+.h5,.h3{
+    margin-top: 0.5rem;
+    margin-bottom: 0.6rem;
+}
+
+.h3{
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+.h5{
+    color: var(--color-gary);
+    font-size: 0.875rem;
+}
+
+.navBar a {
+    list-style: none;
+    float: left;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    position: relative;
+}
+
+/* .navBar a:hover {
+    background-color: rgba(0, 0, 0, .05);
+} */
+
+.navBar a::before {
+    position: absolute;
+    left: 20px;
+    bottom: 3px;
+    width: calc(100% - 40px);
+    height: 3px;
+    content: '';
+    background: var(--color-pink);
+    border-radius: 2px;
+    transition: .25s;
+    transform: scale(0);
+    opacity: 0;
+}
+
+.navBar a:hover::before {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.userImage {
+    border-radius: 50%;
+}
