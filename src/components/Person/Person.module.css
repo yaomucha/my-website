@@ -29,37 +29,10 @@
     font-size: 0.875rem;
 }
 
-.navBar a {
-    list-style: none;
-    float: left;
-    margin: 0 10px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 15px;
-    position: relative;
-}
-
-/* .navBar a:hover {
-    background-color: rgba(0, 0, 0, .05);
-} */
-
-.navBar a::before {
-    position: absolute;
-    left: 20px;
-    bottom: 3px;
-    width: calc(100% - 40px);
-    height: 3px;
-    content: '';
-    background: var(--color-pink);
-    border-radius: 2px;
-    transition: .25s;
-    transform: scale(0);
-    opacity: 0;
-}
-
-.navBar a:hover::before {
-    transform: scale(1);
-    opacity: 1;
+.a{
+    width: 25px;
+    height: 25px;
+    display: inline-block;
 }
 
 .userImage {

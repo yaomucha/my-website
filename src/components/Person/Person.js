@@ -2,8 +2,24 @@ import styles from "./Person.module.css"
 import Image from "next/image"
 import Link from "next/link"
 
+import Lottie from 'react-lottie';
+import * as animationData from '/public/Lotties/email.json'
+import { useState } from "react";
+
 
 export default function Header() {
+    const defaultOptions = {
+        loop: false,
+        autoplay: false,
+        animationData: animationData,
+        rendererSettings: {
+            preserveAspectRatio: 'xMidYMid slice'
+        }
+    };
+
+    const [isStopped, setisStopped] = useState(false)
+    const [isPaused, setisPaused] = useState(false)
+
     return (
         <div className={styles.personBox}>
             <span>
@@ -16,6 +32,7 @@ export default function Header() {
                     alt="123"
                 />
             </span>
+
             <div className={styles.h3}>yaomucha</div>
             <div className={styles.h5}>Later equal nerve</div>
             <div className={styles.statistics}>
@@ -44,6 +61,14 @@ export default function Header() {
                         <use xlinkHref="#icon-weixin"></use>
                     </svg>
                 </Link>
+                <Link href="">
+                    {/* <Lottie options={defaultOptions}
+                        height={28}
+                        width={28}
+                        isStopped={isStopped}
+                        isPaused={isPaused} /> */}
+                </Link>
+
             </div>
         </div>
     )
