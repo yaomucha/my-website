@@ -3,6 +3,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import prism from "remark-prism";
+import { serialize } from "next-mdx-remote/serialize";
+import externalLinks from "remark-external-links";
 
 const postsDirectory = path.join(process.cwd(), 'src/pages/posts');
 
@@ -24,6 +27,7 @@ export function getSortedPostsData() {
     return {
       id,
       ...matterResult.data,
+      fileContents
     };
   });
   // Sort posts by date
@@ -64,6 +68,7 @@ export function getAllPostIds() {
 
 
 export async function getPostData(id) {
+
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
@@ -79,7 +84,13 @@ export async function getPostData(id) {
   // Combine the data with the id and contentHtml
   return {
     id,
-    contentHtml,
+    // contentHtml,
+    contentHtml: await serialize(matterResult.content, {
+      mdxOptions: {
+        remarkPlugins: [prism, externalLinks]
+      },
+    }),
     ...matterResult.data,
+    fileContents
   };
 }

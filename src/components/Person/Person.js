@@ -7,7 +7,7 @@ import * as animationData from '/public/Lotties/email.json'
 import { useState } from "react";
 
 
-export default function Header() {
+export default function Person() {
     const defaultOptions = {
         loop: false,
         autoplay: false,

@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
+import "@/styles/article.css"
 
 
 // 顶级 React 组件，它包装了应用程序中的所有页面。

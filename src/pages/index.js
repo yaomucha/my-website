@@ -6,6 +6,8 @@ import Person from "@/components/Person/Person"
 import Link from 'next/link';
 import utilStyles from '../styles/utils.module.css'
 
+
+
 export async function getStaticProps() {
   const allPostsData = getSortedPostsData();
   return {
@@ -24,6 +26,8 @@ export default function Home({ allPostsData }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href='/iconfont/iconfont.css' />
+        <link rel="preconnect" href="https://your-font-file-host/" />
+        <link rel="stylesheet" href="https://your-font-file-host/inter.css"></link>
 
         <script src='/iconfont/iconfont.js' ></script>
       </Head>
