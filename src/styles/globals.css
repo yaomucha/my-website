@@ -153,3 +153,22 @@ main .title-anchor{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.container {
+  padding: 70px 0;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.backToHome {
+  margin: 3rem 0 0;
+}
+
+@media (max-width: 1000px){
+  .container{
+    padding: 70px 50px;
+  }
+  main .navigation-box{
+    display: none;
+  }
+}

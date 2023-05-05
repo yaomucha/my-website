@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from './layout.module.css'
+
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import "inter-ui/inter.css";
@@ -10,7 +10,7 @@ export const siteTitle = 'Next.js Sample Website'
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -28,7 +28,7 @@ export default function Layout({ children, home }) {
       </Head>
       <main>{children}</main>
       {!home && (
-        <div className={styles.backToHome}>
+        <div className="backToHome">
           <Link href="/">← Back to home</Link>
         </div>
       )}
