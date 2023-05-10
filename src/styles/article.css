@@ -367,6 +367,7 @@ table th:last-child, table td:last-child {
 code {
     background-color: var(--elevated-background);
     padding: 3px 8px 3px 8px;
+    display: block;
 }
 
 .md-fences {
