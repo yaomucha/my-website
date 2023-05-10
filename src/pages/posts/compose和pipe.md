@@ -2,6 +2,7 @@
 title: 'compose和pipe'
 preContent: 'compose和pipe的写法及作用'
 date: '2023-05-10'
+categories: ['js']
 ---
 
 ## compose

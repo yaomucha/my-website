@@ -2,6 +2,7 @@
 title: 'Git'
 preContent: 'git常用命令'
 date: '2023-05-05'
+categories: ['git']
 ---
 
 `init` 在当前目录新建一个Git代码库

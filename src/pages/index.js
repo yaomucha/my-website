@@ -37,13 +37,20 @@ export default function Home({ allPostsData }) {
         <div className={styles.content}>
           <h2>Recent</h2>
           <ul className={styles.ul}>
-            {allPostsData.map(({ id, date, title, preContent }) => (
+            {allPostsData.map(({ id, date, title, preContent, categories }) => (
               <Link href={`/posts/${id}`}>
                 <li className={utilStyles.listItem} key={id}>
                   <h3>{title}</h3>
                   <div className={styles.preContent}>
                     {preContent}
                   </div>
+                  <ul>
+                    {
+                      categories.map(item => {
+                        return <li>{item}</li>
+                      })
+                    }
+                  </ul>
                   <small className={utilStyles.lightText}>
                     {date}
                   </small>

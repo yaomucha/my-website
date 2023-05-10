@@ -2,6 +2,7 @@
 title: '重学JS'
 preContent: 'We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request'
 date: '2023-05-05'
+categories: ['js']
 ---
 
 # 语法
