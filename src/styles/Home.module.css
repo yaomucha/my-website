@@ -332,3 +332,22 @@
   /* transform: scale(0); */
   /* opacity: 0;*/
 }
+
+.categories{
+  list-style: none;
+  color: var(--color-pink);
+  bottom: 20px;
+  left: 100px;
+  height: 30px;
+  /* letter-spacing: 100px; */
+  position: absolute;
+  display: flex;
+}
+
+.categories>li{
+  padding: 0px 10px;
+    /* border: 1px solid; */
+    border-radius: 10px;
+    font-size: 14px;
+
+}

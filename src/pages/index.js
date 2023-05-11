@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header"
 import Person from "@/components/Person/Person"
 import Link from 'next/link';
 import utilStyles from '../styles/utils.module.css'
+import { arrayFlat, removeDuplicates, compose } from "../util/index"
 
 
 
@@ -18,6 +19,9 @@ export async function getStaticProps() {
 }
 
 export default function Home({ allPostsData }) {
+
+  const allCategories = compose(removeDuplicates, arrayFlat)(allPostsData.map(item => { return item.categories }))
+
   return (
     <>
       <Head>
@@ -31,9 +35,14 @@ export default function Home({ allPostsData }) {
 
         <script src='/iconfont/iconfont.js' ></script>
       </Head>
+
       <Header />
+
       <main className={styles.main}>
-        <Person />
+        <Person
+          articlesLength={allPostsData.length}
+          categoriesLength={allCategories.length}
+        />
         <div className={styles.content}>
           <h2>Recent</h2>
           <ul className={styles.ul}>
@@ -44,10 +53,10 @@ export default function Home({ allPostsData }) {
                   <div className={styles.preContent}>
                     {preContent}
                   </div>
-                  <ul>
+                  <ul className={styles.categories}>
                     {
                       categories.map(item => {
-                        return <li>{item}</li>
+                        return <li># {item}</li>
                       })
                     }
                   </ul>

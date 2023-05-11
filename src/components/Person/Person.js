@@ -4,21 +4,9 @@ import Link from "next/link"
 
 import Lottie from 'react-lottie';
 import * as animationData from '/public/Lotties/email.json'
-import { useState } from "react";
+import { memo } from "react";
 
-
-export default function Person() {
-    const defaultOptions = {
-        loop: false,
-        autoplay: false,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: 'xMidYMid slice'
-        }
-    };
-
-    const [isStopped, setisStopped] = useState(false)
-    const [isPaused, setisPaused] = useState(false)
+export default memo(function Person(props) {
 
     return (
         <div className={styles.personBox}>
@@ -37,11 +25,11 @@ export default function Person() {
             <div className={styles.h5}>Later equal nerve</div>
             <div className={styles.statistics}>
                 <div>
-                    <div className={styles.h3}>7</div>
+                    <div className={styles.h3}>{props.articlesLength}</div>
                     <div>文章</div>
                 </div>
                 <div>
-                    <div className={styles.h3}>7</div>
+                    <div className={styles.h3}>{props.categoriesLength}</div>
                     <div>标签</div>
                 </div>
             </div>
@@ -72,4 +60,4 @@ export default function Person() {
             </div>
         </div>
     )
-}
+})
