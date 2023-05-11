@@ -155,10 +155,11 @@ main .title-anchor{
 }
 
 .container {
-  padding: 70px 0;
+  padding: 70px 0px;
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
+  padding-right: 250px;
 }
 .backToHome {
   margin: 3rem 0 0;
