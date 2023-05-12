@@ -7,7 +7,7 @@ import prism from "remark-prism";
 import { serialize } from "next-mdx-remote/serialize";
 import externalLinks from "remark-external-links";
 
-const postsDirectory = path.join(process.cwd(), 'src/pages/posts');
+const postsDirectory = path.join(process.cwd(), 'src/posts');
 
 export function getSortedPostsData() {
   // Get file names under /posts
@@ -18,7 +18,7 @@ export function getSortedPostsData() {
 
     // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const fileContents = fs.readFileSync(fullPath, 'utf-8');
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
@@ -70,7 +70,7 @@ export function getAllPostIds() {
 export async function getPostData(id) {
 
   const fullPath = path.join(postsDirectory, `${id}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const fileContents = fs.readFileSync(fullPath, 'utf-8');
 
   // Use gray-matter to parse the post metadata section
   const matterResult = matter(fileContents);
