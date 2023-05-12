@@ -2,7 +2,7 @@ import styles from "./Person.module.css"
 import Image from "next/image"
 import Link from "next/link"
 
-import Lottie from 'react-lottie';
+// import Lottie from 'react-lottie';
 import * as animationData from '/public/Lotties/email.json'
 import { memo } from "react";
 
