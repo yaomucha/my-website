@@ -19,7 +19,7 @@ export default function Header() {
             <div>
                 <Link href="">Home</Link>
                 <Link href="">随记</Link>
-                <Link href="">项目</Link>
+                <Link href="/projects">项目</Link>
                 <Link href="">工具库</Link>
             </div>
         </div>

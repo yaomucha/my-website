@@ -173,3 +173,18 @@ main .title-anchor{
     display: none;
   }
 }
+
+.fontw-bold{
+  font-weight: 600;
+}
+
+.text-uppercase{
+  text-transform: uppercase!important;
+} 
+.fs-15{
+  font-size: 15px!important;
+} 
+
+.color-black{
+  color: black;
+}

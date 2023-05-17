@@ -31,3 +31,5 @@ categories: ['git']
 `git reset --soft HEAD^`  撤销commit到暂存区
 
 `git reset HEAD <file>`  撤销暂存区文件
+
+`git reset --hard commit_id  `退到/进到 指定的commit
