@@ -22,6 +22,8 @@ import Image from "next/image"
 
 
 import * as echarts from 'echarts';
+import Dashboard_TodoList from '../../page_components/calender/Dashboard_TodoList';
+import Dashboard_time from '../../page_components/calender/Dashboard_time';
 // import { GridComponent } from 'echarts/components';
 // import { BarChart } from 'echarts/charts';
 // import { CanvasRenderer } from 'echarts/renderers';
@@ -34,7 +36,10 @@ import * as echarts from 'echarts';
 
 
 
-const drawerWidth = '200'
+
+
+
+const drawerWidth = '300'
 
 
 
@@ -151,9 +156,9 @@ function ResponsiveDrawer(props) {
         var option;
 
         option = {
-            legend: {
-                data: ['上午', '下午', '晚上']
-            },
+            // legend: {
+            //     data: ['上午', '下午', '晚上']
+            // },
             radar: {
                 // shape: 'circle',
                 indicator: [
@@ -229,7 +234,7 @@ function ResponsiveDrawer(props) {
             </AppBar>
             <Box
                 component="nav"
-                sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+                sx={{ width: { sm: `${drawerWidth}px` }, flexShrink: { sm: 0 } }}
                 aria-label="mailbox folders"
             >
                 <Drawer
@@ -242,7 +247,7 @@ function ResponsiveDrawer(props) {
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth}px` },
                     }}
                 >
                     {drawer}
@@ -251,7 +256,7 @@ function ResponsiveDrawer(props) {
                     variant="permanent"
                     sx={{
                         display: { xs: 'none', sm: 'block' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: `${drawerWidth}px` },
                     }}
                     open
                 >
@@ -264,7 +269,7 @@ function ResponsiveDrawer(props) {
 
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)`, marginLeft: `calc(${drawerWidth}px - 20px)` } }}
+                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
             >
                 <Toolbar />
                 <Typography paragraph>
@@ -287,6 +292,7 @@ function ResponsiveDrawer(props) {
                         gridRowEnd: 3
                     }}
                         id="main"
+                        elevation={0}
                     >
 
 
@@ -295,20 +301,44 @@ function ResponsiveDrawer(props) {
                         gridColumnStart: 4,
                         gridColumnEnd: 6,
                         gridRowStart: 1,
-                        gridRowEnd: 3
-                    }} id="main1"></Paper>
+                        gridRowEnd: 3,
+                        position: "relative",
+                        background: '#f9f9f9'
+                    }} elevation={0}>
+                        <div id="main1" className='main1'></div>
+                        <div className='main-cont1'>
+                            <ul>
+                                <li>
+                                    <span>上午</span>
+                                    <span>33</span>
+                                </li>
+                                <li>
+                                    <span>下午</span>
+                                    <span>28</span>
+                                </li>
+                                <li>
+                                    <span>晚上</span>
+                                    <span>17</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </Paper>
                     <Paper sx={{
                         gridColumnStart: 1,
                         gridColumnEnd: 4,
                         gridRowStart: 3,
                         gridRowEnd: 5
-                    }}>123</Paper>
+                    }} elevation={0}>
+                        <Dashboard_TodoList/>
+                    </Paper>
                     <Paper sx={{
-                         gridColumnStart: 4,
-                         gridColumnEnd: 6,
+                        gridColumnStart: 4,
+                        gridColumnEnd: 6,
                         gridRowStart: 3,
                         gridRowEnd: 5
-                    }}>123</Paper>
+                    }} elevation={0}>
+                        <Dashboard_time/>
+                    </Paper>
                 </Box>
             </Box>
         </Box >
