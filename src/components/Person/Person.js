@@ -10,7 +10,7 @@ export default memo(function Person(props) {
 
     return (
         <div className={styles.personBox}>
-            <span>
+            <span className="flex flex-row justify-center">
                 <Image
                     priority
                     src="/user_1.jpg"

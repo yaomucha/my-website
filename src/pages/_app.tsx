@@ -1,8 +1,9 @@
+import "@/styles/projects.css"
+import "@/styles/index.css"
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import "@/styles/article.css"
-import "@/styles/projects.css"
-import "@/styles/index.css"
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "@/styles/calender.css"
 

@@ -44,7 +44,7 @@ export default function Home({ allPostsData }) {
       this.txt = fullTxt.substring(0, this.txt.length + 1);
     }
 
-    this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+    this.el.innerHTML = '<span className="wrap">' + this.txt + '</span>';
 
     var that = this;
     var delta = 300 - Math.random() * 100;
@@ -103,12 +103,12 @@ export default function Home({ allPostsData }) {
       <section className='hero-wrap'>
         <div className='overlay'></div>
         <div className='container'>
-          <div class="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
-            <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-center text-box">
-              <div class="text text-center">
-                <span class="subheading">Hey! I am</span>
+          <div className="row no-gutters slider-text js-fullheight justify-content-center align-items-center">
+            <div className="col-lg-8 col-md-6 ftco-animate d-flex align-items-center text-box">
+              <div className="text text-center">
+                <span className="subheading">Hey! I am</span>
                 <h1>yaomucha</h1>
-                <h2>I'm a<span class="txt-rotate" data-period="2000"
+                <h2>I'm a<span className="txt-rotate" data-period="2000"
                   data-rotate='[ "Web Designer.", "Developer.", "Photographer.", "Marketer.", "Blogger" ]'>
                 </span>
                 </h2>
@@ -130,7 +130,7 @@ export default function Home({ allPostsData }) {
           articlesLength={allPostsData.length}
           categoriesLength={allCategories.length}
         />
-        <div className={styles.content}>
+        <div className="pl-[400px]">
           <h2>Recent</h2>
           <ul className={styles.ul}>
             {allPostsData.map(({ id, date, title, preContent, categories }) => (
