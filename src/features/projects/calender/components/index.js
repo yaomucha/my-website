@@ -17,13 +17,13 @@ import Typography from '@mui/material/Typography';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Paper from '@mui/material/Paper';
+
 import Image from "next/image"
 
 
 import * as echarts from 'echarts';
-import Dashboard_TodoList from "./Dashboard_TodoList"
-import Dashboard_time from './Dashboard_time';
+
+import Link from 'next/link';
 
 
 
@@ -69,16 +69,25 @@ function ResponsiveDrawer(props) {
                 </Typography>
             </Toolbar>
             <List>
-                {['个人数据', '计划'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InsertChartIcon /> : <CalendarMonthIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+                {[
+                    {
+                        title: '个人数据',
+                        route: "/projects/calender"
+                    }, {
+                        title: '计划',
+                        route: "/projects/calender/plan"
+                    }].map((text, index) => (
+                        <Link href={text.route}>
+                            <ListItem key={text.title} disablePadding>
+                                <ListItemButton>
+                                    <ListItemIcon>
+                                        {index % 2 === 0 ? <InsertChartIcon /> : <CalendarMonthIcon />}
+                                    </ListItemIcon>
+                                    <ListItemText primary={text.title} />
+                                </ListItemButton>
+                            </ListItem>
+                        </Link>
+                    ))}
             </List>
         </div>
     );
@@ -97,7 +106,7 @@ function ResponsiveDrawer(props) {
 
     React.useEffect(() => {
         var chartDom = document.getElementById('main');
-        var myChart = echarts.init(chartDom);
+        var myChart = chartDom && echarts.init(chartDom);
         var option;
 
         option = {
@@ -141,12 +150,12 @@ function ResponsiveDrawer(props) {
             ]
         };
 
-        option && myChart.setOption(option);
+        option && myChart && myChart.setOption(option);
     }, [])
 
     React.useEffect(() => {
         var chartDom = document.getElementById('main1');
-        var myChart = echarts.init(chartDom);
+        var myChart = chartDom && echarts.init(chartDom);
         var option;
 
         option = {
@@ -185,7 +194,7 @@ function ResponsiveDrawer(props) {
             ]
         };
 
-        option && myChart.setOption(option);
+        option && myChart && myChart.setOption(option);
     }, [])
 
 
@@ -269,71 +278,10 @@ function ResponsiveDrawer(props) {
                 <Typography paragraph>
                     欢迎来到个人时间管理后台
                 </Typography>
-                <Box
-                    sx={{
-                        display: 'grid',
-                        width: 'calc(100% - 80px)',
-                        height: 'calc(100% - 170px)',
-                        gridTemplateColumns: 'repeat(5, 20%)',
-                        gridTemplateRows: 'repeat(4, 25%)',
-                        gridGap: '20px 20px'
-                    }}
-                >
-                    <Paper sx={{
-                        gridColumnStart: 1,
-                        gridColumnEnd: 4,
-                        gridRowStart: 1,
-                        gridRowEnd: 3
-                    }}
-                        id="main"
-                        elevation={0}
-                    >
 
-
-                    </Paper>
-                    <Paper sx={{
-                        gridColumnStart: 4,
-                        gridColumnEnd: 6,
-                        gridRowStart: 1,
-                        gridRowEnd: 3,
-                        position: "relative",
-                        background: '#f9f9f9'
-                    }} elevation={0}>
-                        <div id="main1" className='main1'></div>
-                        <div className='main-cont1'>
-                            <ul>
-                                <li>
-                                    <span>上午</span>
-                                    <span>33</span>
-                                </li>
-                                <li>
-                                    <span>下午</span>
-                                    <span>28</span>
-                                </li>
-                                <li>
-                                    <span>晚上</span>
-                                    <span>17</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </Paper>
-                    <Paper sx={{
-                        gridColumnStart: 1,
-                        gridColumnEnd: 4,
-                        gridRowStart: 3,
-                        gridRowEnd: 5
-                    }} elevation={0}>
-                        <Dashboard_TodoList/>
-                    </Paper>
-                    <Paper sx={{
-                        gridColumnStart: 4,
-                        gridColumnEnd: 6,
-                        gridRowStart: 3,
-                        gridRowEnd: 5
-                    }} elevation={0}>
-                        <Dashboard_time/>
-                    </Paper>
-                </Box>
+                {
+                    props.routeComponent
+                }
             </Box>
         </Box >
     );
