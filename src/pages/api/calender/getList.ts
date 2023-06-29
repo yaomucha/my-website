@@ -1,8 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import queryData from "../../../util/connectMysql"
+
+
 
 type Data = {
-  data: list[]
+    data: list[] | undefined
 }
 
 type list = {
@@ -14,18 +17,8 @@ type list = {
 }
 
 export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
+    req: NextApiRequest,
+    res: NextApiResponse<Data>
 ) {
-  res.status(200).json({ data: [
-    { id: 1, taskName: "123",priority: 1,  status: 0, dueDate: 'Jon' },
-    { id: 2, taskName: "123",priority: 1,  status: 0, dueDate: 'Cersei' },
-    { id: 3, taskName: "123",priority: 1,  status: 0, dueDate: 'Jaime'},
-    { id: 4, taskName: "123",priority: 1,  status: 0, dueDate: 'Arya' },
-    { id: 5, taskName: "123",priority: 1,  status: 0, dueDate: 'Daenerys' },
-    { id: 6, taskName: "123",priority: 1,  status: 0, dueDate: '2022-09-22'},
-    { id: 7, taskName: "123",priority: 1,  status: 0, dueDate: 'Ferrara'},
-    { id: 8, taskName: "123",priority: 1,  status: 0, dueDate: 'Rossini' },
-    { id: 9, taskName: "123",priority: 1,  status: 0, dueDate: 'Harvey' },
-  ] })
+    queryData('SELECT * FROM `projects_calender`', res)
 }
