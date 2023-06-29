@@ -22,3 +22,9 @@ export default function handler(
 ) {
     queryData('SELECT * FROM `projects_calender`', res)
 }
+
+export const config = {
+    api: {
+      externalResolver: true,
+    },
+  };
