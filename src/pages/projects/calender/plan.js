@@ -1,7 +1,7 @@
 import * as React from 'react';
 import CalenderContainer from "@/features/projects/calender/components/index"
 import { DataGrid } from '@mui/x-data-grid';
-import { Button, ButtonGroup, Divider, FormControl, FormHelperText, Input, InputLabel, MenuItem, Select } from '@mui/material';
+import { Alert, Button, ButtonGroup, Collapse, Divider, FormControl, FormHelperText, IconButton, Input, InputLabel, MenuItem, Select, Slide, Snackbar, Stack } from '@mui/material';
 
 
 import Backdrop from '@mui/material/Backdrop';
@@ -16,6 +16,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const columns = [
     { field: 'taskName', headerName: 'Task Name', width: 300 },
@@ -24,8 +27,10 @@ const columns = [
         field: 'status',
         headerName: 'Status',
         width: 130,
-        valueGetter: (params) =>
-            params.row.status === 0 ? "未完成" : "已完成"
+        renderCell: (params) =>
+            params.row.status === 0 ? 
+            <Button size="small" variant="contained" className='bg-[#fff8e6] text-[#ffc10a]'>PENDING</Button> : 
+            <Button size="small" variant="contained" className='bg-[#e5f8f5] text-[#00c2c2]'>COMPLETED</Button>
     },
     {
         field: 'priority',
@@ -33,14 +38,14 @@ const columns = [
         description: 'This column has a value getter and is not sortable.',
         sortable: false,
         width: 160,
-        valueGetter: (params) => {
+        renderCell: (params) => {
             switch (params.row.priority) {
                 case 1:
-                    return "高"
+                    return <Button size="small" variant="contained" className='bg-[#f06548]'>high</Button>
                 case 2:
-                    return "中"
+                    return <Button size="small" variant="contained" className='bg-[#ffbc0a]'>medium</Button>
                 case 3:
-                    return "低"
+                    return <Button size="small" variant="contained" className='bg-[#00bd9d]'>low</Button>
                 default:
                     return "未知"
             }
@@ -52,8 +57,14 @@ const columns = [
         sortable: false,
         width: 160,
         renderCell: (params) => <>
-            <Button>edit</Button>
-            <Button>remove</Button>
+            <Stack spacing={2} direction="row">
+                <IconButton aria-label="edit">
+                    <EditIcon/>
+                </IconButton>
+                <IconButton aria-label="delete">
+                    <DeleteIcon/>
+                </IconButton>
+            </Stack>
         </>,
     },
 ];
@@ -77,20 +88,22 @@ export default function Plan() {
 
     const [planList, setPlanList] = React.useState([])
 
-
-    React.useEffect(() => {
+    const getPlanList = () => {
         fetch("/api/calender/getList")
             .then(res => res.json())
             .then(res => {
                 setPlanList(res.data)
             })
+    }
+    React.useEffect(() => {
+        getPlanList()
     }, [])
 
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const [value, setValue] = React.useState(null);
+    const form = React.useRef({})
 
 
 
@@ -99,17 +112,22 @@ export default function Plan() {
         height: 'calc(100% - 100px)'
     }}>
         <Button className='mb-[20px]' onClick={handleOpen}>new task</Button>
-        <DataGrid
-            rows={planList}
-            columns={columns}
-            initialState={{
-                pagination: {
-                    paginationModel: { page: 0, pageSize: 5 },
-                },
-            }}
-            pageSizeOptions={[5, 10]}
-            checkboxSelection
-        />
+        <div className='' style={{
+            height: 'calc(100% - 57px)'
+        }}>
+            <DataGrid
+                rows={planList}
+                columns={columns}
+                initialState={{
+                    pagination: {
+                        paginationModel: { page: 0, pageSize: 10 },
+                    },
+                }}
+                pageSizeOptions={[10, 20]}
+                checkboxSelection
+            />
+        </div>
+
 
 
         <Modal
@@ -132,7 +150,13 @@ export default function Plan() {
                     </Typography>
                     <FormControl fullWidth>
                         <InputLabel htmlFor="my-input">Task Title</InputLabel>
-                        <Input id="my-input" aria-describedby="my-helper-text" placeholder='Enter task title' />
+                        <Input id="my-input"
+                            aria-describedby="my-helper-text"
+                            placeholder='Enter task title'
+                            onChange={(e) => {
+                                form.value = { ...form.value, ...{ taskName: e.target.value } }
+                            }}
+                        />
                     </FormControl>
                     <FormControl fullWidth>
                         <InputLabel>Status</InputLabel>
@@ -141,7 +165,9 @@ export default function Plan() {
                             id="demo-simple-select"
                             // value={age}
                             label="Age"
-                        // onChange={handleChange}
+                            onChange={(e) => {
+                                form.value = { ...form.value, ...{ status: e.target.value } }
+                            }}
                         >
                             <MenuItem value={0}>未完成</MenuItem>
                             <MenuItem value={1}>已完成</MenuItem>
@@ -154,7 +180,9 @@ export default function Plan() {
                             id="demo-simple-select"
                             // value={age}
                             label="Age"
-                        // onChange={handleChange}
+                            onChange={(e) => {
+                                form.value = { ...form.value, ...{ priority: e.target.value } }
+                            }}
                         >
                             <MenuItem value={1}>高</MenuItem>
                             <MenuItem value={2}>中</MenuItem>
@@ -163,12 +191,46 @@ export default function Plan() {
                     </FormControl>
                     <FormControl fullWidth>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DatePicker label="Due Date" />
+                            <DatePicker
+                                label="Due Date"
+                                onChange={(newValue) => {
+                                    form.value = { ...form.value, ...{ dueDate: dayjs(newValue).format('DD/MM/YYYY') } }
+                                }}
+                            />
                         </LocalizationProvider>
                     </FormControl>
                     <ButtonGroup>
-                        <Button>cancel</Button>
-                        <Button>submit</Button>
+                        <Button onClick={() => { handleClose() }}>cancel</Button>
+                        <Button onClick={(e) => {
+                            fetch("/api/calender/addPlan",
+                                {
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json'
+                                    },
+                                    method: "POST",
+                                    body: JSON.stringify({ ...form.value, ...{ id: planList[planList.length - 1].id + 1 } })
+                                })
+                                .then(res => {
+                                    handleClose()
+                                    if (res.status !== 500) {
+                                        <Snackbar
+                                            open={true}
+                                            // onClose={handleClose}
+                                            TransitionComponent={() => {
+                                                return (props) => {
+                                                    return <Slide {...props} direction="left" />;
+                                                }
+                                            }}
+                                            message="I love snacks"
+                                        // key={transition ? transition.name : ''}
+                                        />
+                                        getPlanList()
+                                    } else {
+                                        Alert("添加失败")
+                                    }
+                                })
+                        }}>submit</Button>
                     </ButtonGroup>
                 </Box>
             </Fade>

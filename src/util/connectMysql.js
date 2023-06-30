@@ -1,4 +1,4 @@
-export default function queryData(sql,_res) {
+export default function queryData(sql, _res) {
     var mysql = require('mysql')
 
     var connection = mysql.createConnection({
@@ -13,10 +13,15 @@ export default function queryData(sql,_res) {
 
 
     connection.query(sql, (err, res) => {
-        _res.status(200).json({ data: res })
+
+        if (!err) {
+            _res.status(200).json({ data: res })
+        } else {
+            _res.status(500).json(err)
+        }
     })
 
-    connection.end()  
+    connection.end()
 }
 
 
