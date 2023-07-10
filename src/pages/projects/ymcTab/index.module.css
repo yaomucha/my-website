@@ -1,0 +1,16 @@
+.all_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 49px);
+    grid-template-rows: repeat(auto-fill,49px);
+    grid-gap: 30px 30px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.grid_item_duration{
+    transition-duration: 0.3s;
+}
+
+.all_grid img{
+    border-radius: 10px;
+}

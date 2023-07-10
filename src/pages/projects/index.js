@@ -127,24 +127,28 @@ export default function Projects() {
                     </Row>
                     <Row className="row justify-content-center g-4 mt-4">
                         <Col lg={4} sm={6}>
-                            <div className="demo-box">
-                                <div>
-                                    <img src="https://themesbrand.com/velzon/assets/images/demo/default.png"></img>
+                            <Link href="/projects/calender">
+                                <div className="demo-box">
+                                    <div>
+                                        <img src="/images/projects/calender.png"></img>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="pt-3">
-                                <h6 className="text-uppercase fs-15 fontw-bold color-black">default</h6>
-                            </div>
+                                <div className="pt-3">
+                                    <h6 className="text-uppercase fs-15 fontw-bold color-black">calender</h6>
+                                </div>
+                            </Link>
                         </Col>
                         <Col lg={4} sm={6}>
-                            <div className="demo-box">
-                                <div>
-                                    <img src="https://themesbrand.com/velzon/assets/images/demo/default.png"></img>
+                            <Link href="/projects/ymcTab">
+                                <div className="demo-box">
+                                    <div>
+                                        <img src="https://themesbrand.com/velzon/assets/images/demo/default.png"></img>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="pt-3">
-                                <h6 className="text-uppercase fs-15 fontw-bold color-black">default</h6>
-                            </div>
+                                <div className="pt-3">
+                                    <h6 className="text-uppercase fs-15 fontw-bold color-black">ymcTab</h6>
+                                </div>
+                            </Link>
                         </Col>
                         <Col lg={4} sm={6}>
                             <div className="demo-box">

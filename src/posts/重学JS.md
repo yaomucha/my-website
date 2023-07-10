@@ -22,7 +22,9 @@ categories: ['js']
 
 
 **2. for in**
+
    > for in 会枚举一个对象的所有属性名（或键名）。在每次循环中，object的下一个属性名字符串被复制给variable。通常需要用`object.hasOwnProperty(variable)`来确定这个属性名是该对象的成员，还是来自于原型链。
+
    ``` javaScript
     for(myVar in obj){
         if(obj.hasOwnProperty(myvar)){

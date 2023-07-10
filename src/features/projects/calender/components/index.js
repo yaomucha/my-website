@@ -76,6 +76,9 @@ function ResponsiveDrawer(props) {
                     }, {
                         title: '计划',
                         route: "/projects/calender/plan"
+                    },{
+                        title: '返回项目首页',
+                        route: "/projects"
                     }].map((text, index) => (
                         <Link href={text.route}>
                             <ListItem key={text.title} disablePadding>

@@ -20,54 +20,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-const columns = [
-    { field: 'taskName', headerName: 'Task Name', width: 300 },
-    { field: 'dueDate', headerName: 'Due Date', width: 130 },
-    {
-        field: 'status',
-        headerName: 'Status',
-        width: 130,
-        renderCell: (params) =>
-            params.row.status === 0 ? 
-            <Button size="small" variant="contained" className='bg-[#fff8e6] text-[#ffc10a]'>PENDING</Button> : 
-            <Button size="small" variant="contained" className='bg-[#e5f8f5] text-[#00c2c2]'>COMPLETED</Button>
-    },
-    {
-        field: 'priority',
-        headerName: 'Priority',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
-        renderCell: (params) => {
-            switch (params.row.priority) {
-                case 1:
-                    return <Button size="small" variant="contained" className='bg-[#f06548]'>high</Button>
-                case 2:
-                    return <Button size="small" variant="contained" className='bg-[#ffbc0a]'>medium</Button>
-                case 3:
-                    return <Button size="small" variant="contained" className='bg-[#00bd9d]'>low</Button>
-                default:
-                    return "未知"
-            }
-        }
-    },
-    {
-        headerName: 'Action',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
-        renderCell: (params) => <>
-            <Stack spacing={2} direction="row">
-                <IconButton aria-label="edit">
-                    <EditIcon/>
-                </IconButton>
-                <IconButton aria-label="delete">
-                    <DeleteIcon/>
-                </IconButton>
-            </Stack>
-        </>,
-    },
-];
+
 
 
 const style = {
@@ -102,8 +55,74 @@ export default function Plan() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const deletePlan = (id) => {
+        fetch("/api/calender/deletePlan",
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                method: "DELETE",
+                body: JSON.stringify({ id})
+            })
+            .then(res => {
+                if(res.status !== 500){
+                    getPlanList()
+                }
+                
+            })
+    }
 
     const form = React.useRef({})
+
+    const columns = [
+        { field: 'taskName', headerName: 'Task Name', width: 300 },
+        { field: 'dueDate', headerName: 'Due Date', width: 130 },
+        {
+            field: 'status',
+            headerName: 'Status',
+            width: 130,
+            renderCell: (params) =>
+                params.row.status === 0 ?
+                    <Button size="small" variant="contained" className='bg-[#fff8e6] text-[#ffc10a]'>PENDING</Button> :
+                    <Button size="small" variant="contained" className='bg-[#e5f8f5] text-[#00c2c2]'>COMPLETED</Button>
+        },
+        {
+            field: 'priority',
+            headerName: 'Priority',
+            description: 'This column has a value getter and is not sortable.',
+            sortable: false,
+            width: 160,
+            renderCell: (params) => {
+                switch (params.row.priority) {
+                    case 1:
+                        return <Button size="small" variant="contained" className='bg-[#f06548]'>high</Button>
+                    case 2:
+                        return <Button size="small" variant="contained" className='bg-[#ffbc0a]'>medium</Button>
+                    case 3:
+                        return <Button size="small" variant="contained" className='bg-[#00bd9d]'>low</Button>
+                    default:
+                        return "未知"
+                }
+            }
+        },
+        {
+            headerName: 'Action',
+            description: 'This column has a value getter and is not sortable.',
+            sortable: false,
+            width: 160,
+            renderCell: (params) => <>
+                <Stack spacing={2} direction="row">
+                    <IconButton aria-label="edit">
+                        <EditIcon />
+                    </IconButton>
+                    <IconButton aria-label="delete" onClick={() => deletePlan(params.id)}>
+                        <DeleteIcon />
+                    </IconButton>
+                </Stack>
+            </>,
+        },
+    ];
 
 
 
