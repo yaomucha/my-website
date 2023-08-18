@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import queryData from "../../../util/connectMysql"
 
 import fs from 'fs';
 import path from 'path';
@@ -24,7 +23,7 @@ export default function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-    fs.readFile( path.join(process.cwd(), 'src/pages/api/mycTab') + "/list.json", 'utf8', (err, data) => {
+    fs.readFile(path.join(process.cwd(), 'src/pages/api/mycTab') + "/list.json", 'utf8', (err, data) => {
         if(err) {
             console.log(err)
         } else {

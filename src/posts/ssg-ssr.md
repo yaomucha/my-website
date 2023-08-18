@@ -169,3 +169,12 @@ This was generated using [glyphhanger](https://github.com/filamentgroup/glyphhan
 
 * SCSS use: set `$inter-font-path` to `Inter (web latin)` or `Inter (web hinted latin)`
 * JS/CSS use: import `inter-ui/inter-latin.css` or `inter-ui/inter-hinted-latin.css`
+
+
+名称 | 类型 | 默认值 | 说明 | 必传
+
+-- | -- | -- | -- | --
+
+className | String | - | 类名 | N
+
+style | Object | - | 样式，TS 类型：`React.CSSProperties` | N

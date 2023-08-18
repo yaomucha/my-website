@@ -5,15 +5,10 @@ import Button from 'react-bootstrap/Button';
 import dayjs from "dayjs";
 
 
-import Column from "./Column";
-
+import Column from "./Column"
 
 
 export default function YmcTab() {
-
-
-
-
     return <>
         <Container>
             <Row>
