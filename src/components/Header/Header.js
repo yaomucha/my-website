@@ -9,7 +9,7 @@ export default function Header() {
             <span>
                 <Image
                     priority
-                    src="/user_1.jpg"
+                    src="/images/user/user_1.jpg"
                     className={styles.userImage}
                     height={60}
                     width={60}

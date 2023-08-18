@@ -57,7 +57,7 @@ function ResponsiveDrawer(props) {
                 >
                     <Image
                         priority
-                        src="/user_1.jpg"
+                        src="/images/user/user_1.jpg"
                         className="userImage"
                         height={40}
                         width={40}

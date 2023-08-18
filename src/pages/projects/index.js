@@ -13,7 +13,7 @@ export default function Projects() {
                         <Col lg={8}>
                             <Image
                                 priority
-                                src="/user_1.jpg"
+                                src="/images/user/user_1.jpg"
                                 className="userImage"
                                 height={60}
                                 width={60}
@@ -142,7 +142,7 @@ export default function Projects() {
                             <Link href="/projects/ymcTab">
                                 <div className="demo-box">
                                     <div>
-                                        <img src="https://themesbrand.com/velzon/assets/images/demo/default.png"></img>
+                                        <img src="/images/projects/ymcTab.png"></img>
                                     </div>
                                 </div>
                                 <div className="pt-3">

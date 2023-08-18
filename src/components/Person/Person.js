@@ -13,7 +13,7 @@ export default memo(function Person(props) {
             <span className="flex flex-row justify-center">
                 <Image
                     priority
-                    src="/user_1.jpg"
+                    src="/images/user/user_1.jpg"
                     className={styles.userImage}
                     height={100}
                     width={100}
